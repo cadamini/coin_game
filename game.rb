@@ -13,32 +13,30 @@ result = []
 end
 
 result.each do |coin|
+  next if coin[0].nil?
 
-  unless coin[0].nil?
+  print "Coin: #{coin[0]}"
 
-    print "Coin: #{coin[0]}"
+  if coin[0] <= 17 || (coin[0] >= 41 && coin[0] <= 131)
+    puts '(N)'
+    sum_north += coin[0]
 
-    if coin[0] <= 17 || (coin[0] >= 41 && coin[0] <= 131)
-      puts "(N)"
-      sum_north += coin[0]
+  elsif (coin[0] >= 122 && coin[0] <= 141) ||
+        (coin[0] >= 200 && coin[0] <= 220)
+    puts '(E)'
+    sum_east += coin[0]
 
-    elsif (coin[0] >= 122 && coin[0] <= 141) || (coin[0] >= 200 && coin[0] <= 220)
-      puts "(E)"
-      sum_east += coin[0]
-
-    else
-      puts ""
-    end
+  else
+    puts ''
   end
 end
 
 puts "Total North: #{sum_north}"
 puts "Total East: #{sum_east}"
 
-
-puts "Adding 3 to north."
+puts 'Adding 3 to north.'
 sum_north += 3
-puts "Adding 2 to east."
+puts 'Adding 2 to east.'
 sum_east += 2
 
 puts "Sum north: #{sum_north}"
