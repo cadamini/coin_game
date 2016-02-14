@@ -17,7 +17,7 @@ AllCops:
     - spec/support/**/*
     - ./*.gemspec
     - lib/hosts-ruby.rb
-    - test/**/*
+    - spec/spec_helper.rb
 
 LineLength:
   Enabled: true
