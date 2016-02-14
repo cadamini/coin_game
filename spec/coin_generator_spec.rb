@@ -1,9 +1,7 @@
-
 require 'spec_helper'
 require 'coin_generator'
 
 RSpec.describe CoinGenerator do
-
   before do
     @coin_set = CoinGenerator.new(2)
   end
@@ -17,6 +15,6 @@ RSpec.describe CoinGenerator do
   end
 
   it 'puts the correct numbers on the coins' do
-    expect(@coin_set.coins).to eq [[2, 1],[1, 2]]
+    expect(@coin_set.coins).to eq [[2, 1], [1, 2]]
   end
 end
