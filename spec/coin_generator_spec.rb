@@ -14,7 +14,7 @@ RSpec.describe CoinGenerator do
     expect(@coin_set.number_of_coins).to eq 2
   end
 
-  it 'puts the correct numbers on the coins' do
-    expect(@coin_set.coins).to eq [[2, 1], [1, 2]]
+  it 'creates the correct numbers on the coins' do
+    expect(@coin_set.coins).to eq [[nil, 1], [nil, 2]]
   end
 end
