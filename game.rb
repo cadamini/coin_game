@@ -25,10 +25,12 @@ result.each do |element|
     sum_east += element[0] if (element[0] >= 122 && element[0] <= 141) ||
                               (element[0] >= 200 && element[0] <= 220)
   end
-  # post calculations if required
-  sum_north += 3
-  sum_east += 2
 end
+
+# post calculations if required
+sum_north += 3
+sum_east += 2
+
 puts "sum north: #{sum_north}"
 puts "sum east: #{sum_east}"
 puts "N 51° 27.#{sum_north} E 006° 59.#{sum_east}"
