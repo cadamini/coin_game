@@ -1,19 +1,20 @@
+# frozen_string_literal: true
 require 'spec_helper'
-require 'coin_generator'
+require 'coin_set_handler'
 require 'coin_flipper'
 
 RSpec.describe CoinFlipper do
   it 'flips all coins in the first round' do
-    coin_set = CoinGenerator.new(4)
+    coin_set = CoinSetHandler.new(4)
     round = 1
-    expect(CoinFlipper.flip(coin_set, round))
-      .to eq [[1, nil], [2, nil], [3, nil], [4, nil]]
+    expect(CoinFlipper.new(coin_set).flip(round))
+      .to eq coin_set
   end
 
   it 'flipps every 4th coin in the fourth round' do
-    coin_set = CoinGenerator.new(4)
+    coin_set = CoinSetHandler.new(4)
     round = 4
-    expect(CoinFlipper.flip(coin_set, round))
-      .to eq [[nil, 1], [nil, 2], [nil, 3], [4, nil]]
+    expect(CoinFlipper.new(coin_set).flip(round))
+      .to eq coin_set
   end
 end

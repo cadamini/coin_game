@@ -1,14 +1,19 @@
+# frozen_string_literal: true
 class CoinFlipper
-  def self.flip(coin_set, round)
-    coin_set.coins.every_nth(round).each do |coin|
-      coin[0], coin[1] = coin[1], coin[0]
-    end
-    coin_set.coins
+  def initialize(coin_set)
+    @coin_set = coin_set
   end
-end
 
-module Enumerable
-  def every_nth(n)
-    (0...length).select { |x| x % n == n - 1 }.map { |y| self[y] }
+  def flip(coin)
+    every_nth(@coin_set.coins, coin).each do |c|
+      c[0], c[1] = c[1], c[0]
+    end
+    @coin_set
+  end
+
+  private
+
+  def every_nth(array, n)
+    (0...array.length).select { |x| x % n == n - 1 }.map { |y| array[y] }
   end
 end
