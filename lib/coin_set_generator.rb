@@ -1,18 +1,14 @@
+class InValidInputError < StandardError; end
 # frozen_string_literal: true
-class CoinSetHandler
+class CoinSetGenerator
   attr_reader :number_of_coins, :coins
 
   def initialize(number_of_coins)
     @number_of_coins = number_of_coins
     @coins = create_coins
-  end
-
-  def iterate
-    (1..number_of_coins).each do |every_nth_coin|
-      current_coinset = CoinFlipper.new(self)
-      current_coinset.flip(every_nth_coin)
-    end
-    self
+  rescue ArgumentError, TypeError => error
+    raise InValidInputError,
+          "Positive integer or float expected, #{error.message}"
   end
 
   private

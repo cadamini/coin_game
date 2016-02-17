@@ -1,57 +1,64 @@
+require_relative 'sum_updater.rb'
 # frozen_string_literal: true
 class CoordCalculator
-  attr_reader :last_coin_set
-  attr_accessor :sum_north, :sum_east
+  attr_reader :coin_set
 
-  def initialize(last_coin_set:)
-    @sum_north = 0
-    @sum_east = 0
-    @last_coin_set = last_coin_set
-  end
+  class << self
+    def run(coin_set)
+      sum = SumUpdater.new(initial_north: 0, initial_east: 0)
 
-  def calculate_coordinates
-    last_coin_set.coins.each do |coin|
-      next if coin[0].nil?
-      print coin[0]
-      # TODO: add function to choose certain coins
-      consider_certain_coins(coin)
+      coin_set.coins.each do |coin|
+        next if coin[0].nil?
+        print coin[0]
+        # TODO: add function to choose certain coins
+        # e.g. via
+        # arr[100..200] ???
+        # input.is_a?(FixNum)
+        # input.is_a?(Array)
+
+        # need to change set which is used in line 10 before!
+
+        limit_result_for(sum, coin)
+      end
+      # add custom value
+      # make it configurable from outside
+      sum.modify_north(value: value_north = 3)
+      sum.modify_east(value: value_east = 2)
+      puts "Custom values (N: #{value_north}, E: #{value_east}) added."
+      print_output(sum.sum_north, sum.sum_east)
     end
-    add_custom_values(north: 3, east: 2)
-    print_output
-  end
 
-  private
+    private
 
-  def consider_certain_coins(coin)
-    if consider_for_north(coin)
-      puts '(N)'
-      @sum_north += coin[0]
-    elsif consider_for_east(coin)
-      puts '(E)'
-      @sum_east += coin[0]
-    else
-      puts ''
+    def limit_result_for(sum, coin)
+      # coins for north
+      if coins_for_north(coin)
+        puts ' (N)'
+        sum.modify_north(value: coin[0])
+
+      # coins for east
+      elsif coins_for_east(coin)
+        puts ' (E)'
+        sum.modify_east(value: coin[0])
+      else
+        puts '' # required for correct output
+      end
     end
-  end
 
-  def consider_for_north(coin)
-    coin[0] <= 17 || (coin[0] >= 41 && coin[0] <= 131)
-  end
+    def coins_for_north(coin)
+      coin[0] <= 17 || (coin[0] >= 41 && coin[0] <= 131)
+    end
 
-  def consider_for_east(coin)
-    (coin[0] >= 122 && coin[0] <= 141) || (coin[0] >= 200 && coin[0] <= 220)
-  end
+    def coins_for_east(coin)
+      (coin[0] >= 122 && coin[0] <= 141) ||
+        (coin[0] >= 200 && coin[0] <= 220)
+    end
 
-  def add_custom_values(north:, east:)
-    @sum_north += north
-    puts "Adding #{north} to north."
-    @sum_east += east
-    puts "Adding #{east} to east."
-  end
-
-  def print_output
-    puts "Total North: #{@sum_north}"
-    puts "Total East: #{@sum_east}"
-    puts "N 51° 27.#{@sum_north} E 006° 59.#{@sum_east}"
+    def print_output(north, east)
+      # TODO: check number of digits
+      puts "Total North: #{north}"
+      puts "Total East: #{east}"
+      puts "N 51° 27.#{north} E 006° 59.#{east}"
+    end
   end
 end
