@@ -10,6 +10,6 @@ Gameflow:
   - 3rd round -> ever 3rd coin
   - and so on ...
 
-Run ruby game.rb to start the game with 256 coins. 
+Run ruby start_game.rb 256 to start the game.
 
 Enjoy!
