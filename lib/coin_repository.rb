@@ -1,35 +1,47 @@
+# frozen_string_literal: true
 class CoinRepository
   attr_reader :coin_set, :limited_set
+
   def initialize(coin_set)
     @coin_set = coin_set
     @limited_set = []
   end
-  def smaller(coin_number)
-    coin_set.coins.each do |coin|
-      next if coin[0].nil?
-        if coin[0] < coin_number
-          # or use the number in coin[0] only
-          @limited_set << coin
-        end
+
+  def find(operator, **coins)
+    handle_input_error(coins[:first], *coins[:last])
+    coin_set.each do |this_coin|
+      next if this_coin[0].nil?
+
+      case operator
+      when :greater
+        limited_set << this_coin if this_coin[0] > coins[:first]
+      when :smaller
+        limited_set << this_coin if this_coin[0] < coins[:first]
+      when :between
+        limited_set << this_coin if this_coin[0] > coins[:first] && this_coin[0] < coins[:last]
+      end
     end
-    @limited_set
+    limited_set
   end
-  def greater(coin_number)
-    coin_set.coins.each do |coin|
-      next if coin[0].nil?
-        if coin[0] > coin_number
-          @limited_set << coin
-        end
+
+  private
+
+  def handle_input_error(*coin_numbers)
+    if coin_numbers.size == 1
+      if coin_numbers[0] > coin_set.size
+        raise ArgumentError,
+              "Invalid value #{coin_numbers[0]} for greater or smaller, "\
+              "Maximum value #{coin_set.size}"
+      end
+    elsif coin_numbers.size == 2
+      if coin_numbers[0] > coin_set.size ||
+         coin_numbers[1] > coin_set.size
+        raise ArgumentError,
+              "Invalid value (#{coin_numbers[0]} or #{coin_numbers[1]})"\
+              "for between, Maximum value #{coin_set.size}"
+      end
+    else
+      raise ArgumentError, 'too many arguments, max 2 allowed'
     end
-    @limited_set
-  end
-  def between(smaller_coin, greater_coin)
-    coin_set.coins.each do |coin|
-      next if coin[0].nil?
-        if coin[0] > smaller_coin && coin[0] < greater_coin
-          @limited_set << coin
-        end
-    end
-    @limited_set
   end
 end
