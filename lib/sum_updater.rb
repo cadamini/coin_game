@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class SumUpdater
   attr_reader :initial_value
   def initialize
@@ -7,6 +8,5 @@ class SumUpdater
 
   def add(value:)
     @initial_value += value
-    @initial_value
   end
 end

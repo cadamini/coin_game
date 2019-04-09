@@ -1,23 +1,31 @@
-class InValidInputError < StandardError; end
 # frozen_string_literal: true
-class CoinSetGenerator
-  attr_reader :number_of_coins, :coins
 
-  def initialize(number_of_coins)
-    @number_of_coins = number_of_coins
+require_relative 'coin'
+
+class CoinSetGenerator
+  attr_reader :total_coins, :coins
+
+  def initialize(total_coins)
+    @total_coins = total_coins
     @coins = create_coins
-  rescue ArgumentError, TypeError => error
-    raise InValidInputError,
-          "Positive integer or float expected, #{error.message}"
+  end
+
+  def create_coins
+    handle_wrong_inputs
+
+    (0..total_coins - 1).map do |i|
+      coin = Coin.new
+      [coin.heads, coin.tail = i + 1]
+    end
   end
 
   private
 
-  def create_coins
-    coins = Array.new(number_of_coins) { Array.new(2) }
-    (0..number_of_coins - 1).each do |i|
-      coins[i][1] = i + 1
-    end
-    coins
+  def handle_wrong_inputs
+    raise ArgumentError, 'Expected number > 0' if coin_input_nil_or_negative?
+  end
+
+  def coin_input_nil_or_negative?
+    total_coins.nil? || total_coins < 1
   end
 end

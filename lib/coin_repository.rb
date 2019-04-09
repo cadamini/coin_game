@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+
+# TODO: Fix Metrics/CyclomaticComplexity
 class CoinRepository
   attr_reader :coin_set, :limited_set
 
@@ -18,7 +20,9 @@ class CoinRepository
       when :smaller
         limited_set << this_coin if this_coin[0] < coins[:first]
       when :between
-        limited_set << this_coin if this_coin[0] > coins[:first] && this_coin[0] < coins[:last]
+        if this_coin[0] > coins[:first] && this_coin[0] < coins[:last]
+          limited_set << this_coin
+        end
       end
     end
     limited_set

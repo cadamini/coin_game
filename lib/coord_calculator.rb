@@ -6,7 +6,7 @@ class CoordCalculator
   attr_reader :coin_set
 
   class << self
-    def build_sum(coins:, extra:)
+    def build_sum(coins:, extra: 0)
       sum = SumUpdater.new
       coins.limited_set.each do |coin|
         sum.add(value: coin[0])
