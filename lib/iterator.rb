@@ -26,10 +26,7 @@ class Iterator
   def every_nth(array, iteration)
     matching_coins = (0...array.length).select do |coin|
       coin % iteration == iteration - 1
-    end
-    matching_coins.map do |value|
-      array[value]
-    end
+    end.map { |value| array[value] }
   end
 
   def last_coin
