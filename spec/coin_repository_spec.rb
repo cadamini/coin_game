@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'coin_repository'
-require 'coin_set_generator'
+require 'coin_set'
 
 # TODO: Fix Metrics/BlockLength
 

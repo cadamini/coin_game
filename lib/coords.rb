@@ -2,11 +2,11 @@
 
 require_relative 'sum_updater.rb'
 
-class CoordCalculator
+class Coords
   attr_reader :coin_set
 
   class << self
-    def build_sum(coins:, extra: 0)
+    def build(coins:, extra: 0)
       sum = SumUpdater.new
       coins.limited_set.each do |coin|
         sum.add(value: coin[0])

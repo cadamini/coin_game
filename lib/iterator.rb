@@ -30,6 +30,6 @@ class Iterator
   end
 
   def last_coin
-    coin_set.total_coins
+    coin_set.amount
   end
 end

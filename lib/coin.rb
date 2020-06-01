@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Coin
-  attr_accessor :tail, :heads
+  attr_accessor :tails, :heads
   def initialize
     @heads = nil
-    @tail = 0
+    @tails = 0
   end
 end
