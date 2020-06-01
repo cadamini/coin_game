@@ -11,17 +11,17 @@ class CoinRepository
 
   def find(operator, **coins)
     handle_input_error(coins[:first], *coins[:last])
-    coin_set.each do |this_coin|
-      next if this_coin[0].nil?
+    coin_set.each do |coin|
+      next if coin[0].nil?
 
       case operator
       when :greater
-        limited_set << this_coin if this_coin[0] > coins[:first]
+        limited_set << coin if coin[0] > coins[:first]
       when :smaller
-        limited_set << this_coin if this_coin[0] < coins[:first]
+        limited_set << coin if coin[0] < coins[:first]
       when :between
-        if this_coin[0] > coins[:first] && this_coin[0] < coins[:last]
-          limited_set << this_coin
+        if coin[0] > coins[:first] && coin[0] < coins[:last]
+          limited_set << coin
         end
       end
     end
