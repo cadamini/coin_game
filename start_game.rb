@@ -12,7 +12,7 @@ class Game
     coin_set.coins
   end
 
-  def self.north_coordinate(limited_coins)
+  def self.north(limited_coins)
     coins = coins(limited_coins)
     coins.find(:greater, first: 256)
     coins.find(:smaller, first: 18)
@@ -20,7 +20,7 @@ class Game
     puts "N 51° 27.#{CoordCalculator.build_sum(coins: coins, extra: 3)}"
   end
 
-  def self.east_coordinate(limited_coins)
+  def self.east(limited_coins)
     coins = coins(limited_coins)
     coins.find(:greater, first: 256)
     coins.find(:smaller, first: 1)
@@ -35,5 +35,5 @@ class Game
 end
 
 coins = Game.start
-Game.north_coordinate(coins)
-Game.east_coordinate(coins)
+Game.north(coins)
+Game.east(coins)
