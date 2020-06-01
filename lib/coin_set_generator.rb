@@ -2,7 +2,7 @@
 
 require_relative 'coin'
 
-class CoinSetGenerator
+class CoinSet
   attr_reader :total_coins, :coins
 
   def initialize(total_coins)
@@ -22,7 +22,7 @@ class CoinSetGenerator
   private
 
   def handle_wrong_inputs
-    raise ArgumentError, 'Expected number > 0' if coin_input_nil_or_negative?
+    raise ArgumentError, 'Enter an integer > 0 to start the game.' if coin_input_nil_or_negative?
   end
 
   def coin_input_nil_or_negative?

@@ -3,13 +3,13 @@
 require 'spec_helper'
 require 'coin_set_generator'
 
-RSpec.describe CoinSetGenerator do
+RSpec.describe CoinSet do
   before do
-    @generator = CoinSetGenerator.new(2)
+    @generator = CoinSet.new(2)
   end
 
   it 'is a coin generator' do
-    expect(@generator).to be_a(CoinSetGenerator)
+    expect(@generator).to be_a(CoinSet)
   end
 
   it 'generates a number of coins' do
@@ -26,11 +26,11 @@ RSpec.describe CoinSetGenerator do
 
   describe 'raise error when input' do
     it 'is called with negative integer value' do
-      expect { CoinSetGenerator.new(-1) }
+      expect { CoinSet.new(-1) }
         .to raise_error ArgumentError
     end
     it 'is called with a character' do
-      expect { CoinSetGenerator.new('a') }
+      expect { CoinSet.new('a') }
         .to raise_error ArgumentError
     end
   end

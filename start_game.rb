@@ -7,9 +7,7 @@ require_relative 'lib/iterator'
 
 class Game
   def self.start
-    raise 'Enter an integer > 0 to start the game.' if ARGV[0].nil?
-
-    coin_set = CoinSetGenerator.new(ARGV[0].to_i)
+    coin_set = CoinSet.new(ARGV[0].to_i)
     Iterator.new(coin_set).flip_every_nth_coin
     coin_set.coins
   end
