@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class Iterator
+class Flipper
   attr_reader :coin_set
 
-  def flip_every_nth_coin
+  def every_nth_coin
     (1..last_coin).each do |iteration|
       flip(coin_set.coins, iteration)
     end

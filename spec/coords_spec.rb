@@ -6,7 +6,7 @@ require 'coin_set'
 
 RSpec.describe Coords do
   before do
-    @coins = double('visible_coins', limited_set: [[1, nil], [2, nil]])
+    @coins = double('visible_coins', result_set: [[1, nil], [2, nil]])
   end
 
   it 'builds the sum of visible coin values' do

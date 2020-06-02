@@ -2,11 +2,11 @@
 
 # TODO: Fix Metrics/CyclomaticComplexity
 class CoinRepository
-  attr_reader :coin_set, :limited_set
+  attr_reader :coin_set, :result_set
 
   def initialize(coin_set)
     @coin_set = coin_set
-    @limited_set = []
+    @result_set = []
   end
 
   def find(operator, **coins)
@@ -16,16 +16,16 @@ class CoinRepository
 
       case operator
       when :greater
-        limited_set << coin if coin[0] > coins[:first]
+        result_set << coin if coin[0] > coins[:first]
       when :smaller
-        limited_set << coin if coin[0] < coins[:first]
+        result_set << coin if coin[0] < coins[:first]
       when :between
         if coin[0] > coins[:first] && coin[0] < coins[:last]
-          limited_set << coin
+          result_set << coin
         end
       end
     end
-    limited_set
+    result_set
   end
 
   private
