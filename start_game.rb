@@ -9,15 +9,14 @@ coins = ARGV[0].to_i
 
 set = CoinSet.new(coins)
 coins = Flipper.new(set).every_nth_coin
-coin_set = CoinRepository.new(coins)
 
-north = coin_set
+north = CoinRepository.new(coins)
 north.find(:greater, first: 256)
 north.find(:smaller, first: 18)
 north.find(:between, first: 40, last: 131)
 puts "N 51° 27.#{Coords.build(coins: north, extra: 3)}"
 
-east = coin_set
+east = CoinRepository.new(coins)
 east.find(:greater, first: 256)
 east.find(:smaller, first: 1)
 east.find(:between, first: 121, last: 142)

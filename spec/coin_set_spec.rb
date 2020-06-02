@@ -24,8 +24,8 @@ RSpec.describe CoinSet do
   end
 
   it 'creates coins' do
-    coinset = CoinSet.new(2)
-    expect(coinset.coin_array).to eq [[nil, 1], [nil, 2]]
+    coinset = CoinSet.new(3)
+    expect(coinset.create).to eq [[nil, 1], [nil, 2], [nil, 3]]
   end
 
   describe 'raise error when input' do

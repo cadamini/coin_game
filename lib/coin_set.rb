@@ -8,12 +8,12 @@ class CoinSet
   def initialize(amount)
     raise ArgumentError if invalid_input(amount)
     @amount = amount
-    @coins = coin_array
+    @coins = create
   end
 
-  def coin_array
+  def create
     coin = Coin.new
-    (0..amount - 1).map { |i| [coin.heads, coin.tails = i + 1] }
+    (0..amount - 1).map { |i| [nil, coin.tails = i + 1] }
   end
 
   private
