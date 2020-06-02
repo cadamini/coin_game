@@ -10,10 +10,10 @@ RSpec.describe Coords do
   end
 
   it 'builds the sum of visible coin values' do
-    expect(Coords.build(coins: @coins)).to eq 3
+    expect(Coords.build(coins: @coins.result_set)).to eq 3
   end
 
   it 'add an extra number on top of the result ' do
-    expect(Coords.build(coins: @coins, extra: 3)).to eq 6
+    expect(Coords.build(coins: @coins.result_set, extra: 3)).to eq 6
   end
 end
