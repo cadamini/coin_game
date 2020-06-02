@@ -8,9 +8,7 @@ class Coords
   class << self
     def build(coins:, extra: 0)
       sum = SumUpdater.new
-      coins.result_set.each do |coin|
-        sum.add(value: coin[0])
-      end
+      coins.result_set.each { |coin| sum.add(value: coin[0]) }
       sum.add(value: extra)
     end
   end
