@@ -7,6 +7,7 @@ class CoinSet
 
   def initialize(amount)
     raise ArgumentError if invalid_input(amount)
+
     @amount = amount
     @coins = create
   end
@@ -19,6 +20,6 @@ class CoinSet
   private
 
   def invalid_input(amount)
-    amount < 1 || amount.kind_of?(String)
+    amount < 1 || amount.is_a?(String)
   end
 end

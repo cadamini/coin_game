@@ -14,7 +14,7 @@ RSpec.describe CoinSet do
   end
 
   it 'cannot create a zero coin coinset' do
-    expect{ CoinSet.new(0) }.to raise_error ArgumentError
+    expect { CoinSet.new(0) }.to raise_error ArgumentError
   end
 
   it 'creates coins' do
