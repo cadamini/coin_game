@@ -2,7 +2,6 @@
 This is a little test project to solve a geocaching mystery
 and to practise programming and writing specs.
 
-Gameflow: 
 * Each coin is lying upside-down at the beginning. 
 * In the first round each coin is flipped-over.
 * In each subsequent round one more coin is skipped, 
@@ -10,6 +9,6 @@ Gameflow:
   - 3rd round -> ever 3rd coin
   - and so on ...
 
-Run ruby start_game.rb 256 to start the game.
+Each coin has a value on the top side. The first coin has 1, the second 2 and so on. At the end each visible number of each non-flipped coin laying upside-down is counted. 
 
-Enjoy!
+Run `ruby start_game.rb your_number_of_coins` e.g. with 10 to start the game.
