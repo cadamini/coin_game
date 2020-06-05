@@ -3,10 +3,13 @@
 require 'spec_helper'
 require 'coords'
 require 'coin_set'
+require 'flipper'
 
 RSpec.describe Coords do
   before do
-    @coins = double('visible_coins', result_set: [[1, nil], [2, nil]])
+  	set = CoinSet.new(256)
+  	result = Flipper.new(set).every_nth_coin
+    @coins = double('visible_coins', result_set: result)
   end
 
   it 'builds the sum of visible coin values' do

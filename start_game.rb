@@ -5,10 +5,12 @@ require_relative 'lib/coin_repository'
 require_relative 'lib/coin_set'
 require_relative 'lib/flipper'
 
-coins = ARGV[0].to_i
-
-set = CoinSet.new(coins)
+set = CoinSet.new(ARGV[0].to_i)
 flipped_coins = Flipper.new(set).every_nth_coin
+
+# previous result 
+# N 51° 27.04480
+# E 006° 59.020
 
 north = CoinRepository.new(flipped_coins)
 north.find(:greater, first: 256)

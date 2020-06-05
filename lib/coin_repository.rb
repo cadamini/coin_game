@@ -10,15 +10,15 @@ class CoinRepository
 
   def find(operator, **coins)
     coin_set.each do |coin|
-      next if coin[0].nil?
+      next if coin.value.nil?
 
       case operator
       when :greater
-        result_set << coin if coin[0] > coins[:first]
+        result_set << coin if coin.value > coins[:first]
       when :smaller
-        result_set << coin if coin[0] < coins[:first]
+        result_set << coin if coin.value < coins[:first]
       when :between
-        result_set << coin if coin[0] > coins[:first] && coin[0] < coins[:last]
+        result_set << coin if coin.value > coins[:first] && coin.value < coins[:last]
       end
     end
     result_set

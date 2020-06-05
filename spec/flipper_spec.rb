@@ -9,6 +9,11 @@ RSpec.describe Flipper do
     coin_set = CoinSet.new(4)
     expect(
       Flipper.new(coin_set).every_nth_coin
-    ).to eq [[1, nil], [nil, 2], [nil, 3], [4, nil]]
+    ).to match_array [
+      have_attributes(number: 1, value: 0), 
+      have_attributes(number: 2, value: 2),
+      have_attributes(number: 3, value: 3),
+      have_attributes(number: 4, value: 0)
+    ]
   end
 end

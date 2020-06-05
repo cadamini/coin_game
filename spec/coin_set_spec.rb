@@ -10,7 +10,7 @@ RSpec.describe CoinSet do
 
   it 'generates a number of coins' do
     coinset = CoinSet.new(2201)
-    expect(coinset.amount).to eq 2201
+    expect(coinset.number_of_coins).to eq 2201
   end
 
   it 'cannot create a zero coin coinset' do
@@ -19,7 +19,11 @@ RSpec.describe CoinSet do
 
   it 'creates coins' do
     coinset = CoinSet.new(3)
-    expect(coinset.create).to eq [[nil, 1], [nil, 2], [nil, 3]]
+    expect(coinset.coin_array).to match_array [
+      have_attributes(number: 1, value: 1), 
+      have_attributes(number: 2, value: 2),
+      have_attributes(number: 3, value: 3)
+    ]
   end
 
   describe 'raise error when input' do
