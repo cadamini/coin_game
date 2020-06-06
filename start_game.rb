@@ -24,7 +24,3 @@ east.find(:between, first: 121, last: 142)
 east.find(:between, first: 199, last: 221)
 result = Coords.build(coins: east.filtered, extra: 2)
 puts "E #{result}"
-
-
-
-

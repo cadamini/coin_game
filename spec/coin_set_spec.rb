@@ -20,7 +20,7 @@ RSpec.describe CoinSet do
   it 'creates coins' do
     coinset = CoinSet.new(3)
     expect(coinset.coin_array).to match_array [
-      have_attributes(number: 1, value: 1), 
+      have_attributes(number: 1, value: 1),
       have_attributes(number: 2, value: 2),
       have_attributes(number: 3, value: 3)
     ]

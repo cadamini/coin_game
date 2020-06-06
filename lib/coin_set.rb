@@ -7,6 +7,7 @@ class CoinSet
 
   def initialize(number_of_coins)
     raise ArgumentError if invalid_input(number_of_coins)
+
     @number_of_coins = number_of_coins
     @coins = coin_array
   end

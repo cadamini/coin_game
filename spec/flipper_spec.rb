@@ -10,7 +10,7 @@ RSpec.describe Flipper do
     expect(
       Flipper.every_nth_coin(coin_set)
     ).to match_array [
-      have_attributes(number: 1, value: 0), 
+      have_attributes(number: 1, value: 0),
       have_attributes(number: 2, value: 2),
       have_attributes(number: 3, value: 3),
       have_attributes(number: 4, value: 0)

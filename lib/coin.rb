@@ -15,5 +15,5 @@ class Coin
   def flip_up
     @value = @number
     self
-  end  
+  end
 end

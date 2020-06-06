@@ -7,8 +7,8 @@ require 'flipper'
 
 RSpec.describe Coords do
   before do
-  	@coins = double(
-      'visible_coins', 
+    @coins = double(
+      'visible_coins',
       result_set: [Coin.new(1), Coin.new(2), Coin.new(3).flip_down]
     )
   end

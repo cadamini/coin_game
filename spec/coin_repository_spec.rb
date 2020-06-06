@@ -11,7 +11,7 @@ RSpec.describe CoinRepository do
   context '#find coins successfully' do
     it 'get a coin set' do
       expect(CoinRepository.new(five).coin_set).to match_array [
-        have_attributes(number: 1, value: 1), 
+        have_attributes(number: 1, value: 1),
         have_attributes(number: 2, value: 2),
         have_attributes(number: 3, value: 3),
         have_attributes(number: 4, value: 4),
