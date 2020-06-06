@@ -8,7 +8,7 @@ RSpec.describe Flipper do
   it 'iterates over the coins' do
     coin_set = CoinSet.new(4)
     expect(
-      Flipper.new(coin_set).every_nth_coin
+      Flipper.every_nth_coin(coin_set)
     ).to match_array [
       have_attributes(number: 1, value: 0), 
       have_attributes(number: 2, value: 2),

@@ -6,21 +6,25 @@ require_relative 'lib/coin_set'
 require_relative 'lib/flipper'
 
 set = CoinSet.new(ARGV[0].to_i)
-flipped_coins = Flipper.new(set).every_nth_coin
+flipped_coins = Flipper.every_nth_coin(set)
 
-# previous result 
-# N 51° 27.04480
-# E 006° 59.020
+# previous result N 448 / E 2
 
 north = CoinRepository.new(flipped_coins)
 north.find(:greater, first: 256)
 north.find(:smaller, first: 18)
 north.find(:between, first: 40, last: 131)
-puts "N 51° 27.#{Coords.build(coins: north.result_set, extra: 3)}"
+result = Coords.build(coins: north.filtered, extra: 3)
+puts "N #{result}"
 
 east = CoinRepository.new(flipped_coins)
 east.find(:greater, first: 256)
 east.find(:smaller, first: 1)
 east.find(:between, first: 121, last: 142)
 east.find(:between, first: 199, last: 221)
-puts "E 006° 59.#{Coords.build(coins: east.result_set, extra: 2)}"
+result = Coords.build(coins: east.filtered, extra: 2)
+puts "E #{result}"
+
+
+
+

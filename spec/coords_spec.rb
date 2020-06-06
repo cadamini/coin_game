@@ -7,9 +7,10 @@ require 'flipper'
 
 RSpec.describe Coords do
   before do
-  	set = CoinSet.new(256)
-  	result = Flipper.new(set).every_nth_coin
-    @coins = double('visible_coins', result_set: result)
+  	@coins = double(
+      'visible_coins', 
+      result_set: [Coin.new(1), Coin.new(2), Coin.new(3).flip_down]
+    )
   end
 
   it 'builds the sum of visible coin values' do

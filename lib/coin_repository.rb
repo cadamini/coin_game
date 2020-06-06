@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class CoinRepository
-  attr_reader :coin_set, :result_set
+  attr_reader :coin_set, :filtered
 
   def initialize(coin_set)
     @coin_set = coin_set
-    @result_set = []
+    @filtered = []
   end
 
   def find(operator, **coins)
@@ -14,13 +14,13 @@ class CoinRepository
 
       case operator
       when :greater
-        result_set << coin if coin.value > coins[:first]
+        filtered << coin if coin.value > coins[:first]
       when :smaller
-        result_set << coin if coin.value < coins[:first]
+        filtered << coin if coin.value < coins[:first]
       when :between
-        result_set << coin if coin.value > coins[:first] && coin.value < coins[:last]
+        filtered << coin if coin.value > coins[:first] && coin.value < coins[:last]
       end
     end
-    result_set
+    filtered
   end
 end
