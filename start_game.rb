@@ -14,6 +14,14 @@ north = CoinRepository.new(flipped_coins)
 north.find(:greater, first: 256)
 north.find(:smaller, first: 18)
 north.find(:between, first: 40, last: 131)
+
+## debug
+# sum = 0
+# north.filtered.each do |coin| 
+#   sum += coin.value
+#   p "#{coin.number}: #{sum}"
+# end
+
 result = Coords.build(coins: north.filtered, extra: 3)
 puts "N #{result}"
 
@@ -22,5 +30,13 @@ east.find(:greater, first: 256)
 east.find(:smaller, first: 1)
 east.find(:between, first: 121, last: 142)
 east.find(:between, first: 199, last: 221)
+
+## debug
+# sum = 0
+# east.filtered.each do |coin| 
+#   sum += coin.value
+#   p "#{coin.number}: #{sum}"
+# end
+
 result = Coords.build(coins: east.filtered, extra: 2)
 puts "E #{result}"
