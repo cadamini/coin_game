@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CoinRepository
+class CoinFilter
   attr_reader :coin_set, :filtered
 
   def initialize(coin_set)

@@ -10,7 +10,7 @@ RSpec.describe CoinSet do
 
   it 'generates a number of coins' do
     coinset = CoinSet.new(2201)
-    expect(coinset.number_of_coins).to eq 2201
+    expect(coinset.coins).to eq 2201
   end
 
   it 'cannot create a zero coin coinset' do

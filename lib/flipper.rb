@@ -2,10 +2,10 @@
 
 class Flipper
   def self.every_nth_coin(coin_set)
-    (1..coin_set.number_of_coins).map do |iteration|
-      flip(coin_set.coins, iteration)
+    (1..coin_set.coins).map do |iteration|
+      flip(coin_set.coin_array, iteration)
     end
-    coin_set.coins
+    coin_set.coin_array
   end
 
   def self.flip(coins, iteration)
